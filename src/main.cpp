@@ -10,5 +10,11 @@ REXCVAR_DEFINE_BOOL(input_patch, true, "SDOJ",
 REXCVAR_DEFINE_BOOL(render_patch, true, "SDOJ",
                     "enable the render latency patch")
     .lifecycle(rex::cvar::Lifecycle::kRequiresRestart);
+REXCVAR_DEFINE_BOOL(sdoj_trace, false, "SDOJ",
+                    "trace guest small-counter decrements to sdoj_trace_*.log")
+    .lifecycle(rex::cvar::Lifecycle::kRequiresRestart);
+REXCVAR_DEFINE_BOOL(sdoj_invincible, false, "SDOJ",
+                    "cheat: do not lose lives when hit")
+    .lifecycle(rex::cvar::Lifecycle::kRequiresRestart);
 
 REX_DEFINE_APP(saidaioujou_recomp_tu1, SaidaioujouRecompTu1App::Create)

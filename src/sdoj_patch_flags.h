@@ -14,4 +14,14 @@ inline bool render_enabled() {
   return enabled;
 }
 
-} 
+inline bool trace_enabled() {
+  static const bool enabled = REXCVAR_QUERY(bool, sdoj_trace);
+  return enabled;
+}
+
+inline bool invincible_enabled() {
+  static const bool enabled = REXCVAR_QUERY(bool, sdoj_invincible);
+  return enabled;
+}
+
+}

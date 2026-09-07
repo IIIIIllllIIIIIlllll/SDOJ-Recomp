@@ -1,4 +1,5 @@
 #include "saidaioujou_recomp_tu1_init.h"
+#include "../../src/sdoj_trace.h"
 
 DEFINE_REX_FUNC(sub_880F1BE0) {
 	REX_FUNC_PROLOGUE();

@@ -1,5 +1,6 @@
 #include "saidaioujou_recomp_tu1_init.h"
 #include "../../src/sdoj_patch_flags.h"
+#include "../../src/sdoj_trace.h"
 
 
 #include <array>
@@ -1574,6 +1575,10 @@ loc_88051D30:
 	// bl 0x880358c0
 	ctx.lr = 0x88051D3C;
 	sub_880358C0(ctx, base);
+	// sdoj discovery: per-frame byte-diff to find the bomb/life counter address;
+	// the re-hooked store macros separately record which function writes the
+	// counter window (see sdoj_trace.h).
+	sdoj_trace::DecrementScan(base);
 	if (sdoj_patch_flags::input_enabled()) {
 		// refresh input right before the game builds the mask
 		const uint32_t input_object = REX_LOAD_U32(0x88881720);

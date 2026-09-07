@@ -1,4 +1,5 @@
 #include "saidaioujou_recomp_tu1_init.h"
+#include "../../src/sdoj_trace.h"
 #include "../../src/sdoj_patch_flags.h"
 
 

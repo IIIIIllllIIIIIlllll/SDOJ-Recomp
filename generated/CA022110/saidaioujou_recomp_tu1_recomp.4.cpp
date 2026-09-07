@@ -1,4 +1,5 @@
 #include "saidaioujou_recomp_tu1_init.h"
+#include "../../src/sdoj_trace.h"
 
 DEFINE_REX_FUNC(sub_880B3108) {
 	REX_FUNC_PROLOGUE();
@@ -15642,6 +15643,15 @@ loc_880B9F98:
 DEFINE_REX_FUNC(sub_880B9FA0) {
 	REX_FUNC_PROLOGUE();
 	uint32_t ea{};
+	// sdoj invincible: choke point for ALL player-death paths (4 call sites:
+	// recomp.4.cpp hit-flag path, table path, state path, sub_880BA8F8).
+	// None of the callers use the return value. Suppressing this skips the
+	// whole death sequence (sub_880B8638 state/countdown + sub_880B6EA8
+	// alive-flag clear), so the player can never die.
+	if (sdoj_patch_flags::invincible_enabled()) {
+		ctx.r3.s64 = 1;
+		return;
+	}
 	// mflr r12
 	ctx.r12.u64 = ctx.lr;
 	// stw r12,-8(r1)

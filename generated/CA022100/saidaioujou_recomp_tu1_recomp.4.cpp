@@ -1,4 +1,5 @@
 #include "saidaioujou_recomp_tu1_init.h"
+#include "../../src/sdoj_patch_flags.h"
 
 
 DEFINE_REX_FUNC(sub_880B32B8) {
@@ -12461,6 +12462,7 @@ loc_880B8B08:
 
 DEFINE_REX_FUNC(sub_880B8B10) {
 	REX_FUNC_PROLOGUE();
+	if (sdoj_patch_flags::invincible_enabled()) { ctx.r3.s64 = 1; return; }
 	uint32_t ea{};
 	// mflr r12
 	ctx.r12.u64 = ctx.lr;
